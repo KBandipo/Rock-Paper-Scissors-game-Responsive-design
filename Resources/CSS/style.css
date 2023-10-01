@@ -1,0 +1,216 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* At defualt 1rem = 16px*/
+  /* 10px / 16px = 62.5%*/
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+}
+body {
+  font-family: "Inter", sans-serif;
+  color: #343a40;
+  color: #fff;
+}
+
+/* main container */
+.main-container {
+  height: 100vh;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 80rem;
+  background-color: yellow;
+}
+
+/* *************************************************************** */
+/* game container */
+.game-container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: red;
+  border-radius: 6%;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+
+.two-grid-columns {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* *************************************************************** */
+/* Both Player and Computer Section */
+.cont1 {
+  padding: 4rem;
+  padding-left: 4rem;
+
+  /* justify-content: center; */
+}
+.player-section {
+  /* border-top-left-radius: 8%;
+  border-bottom-left-radius: 8%;
+  align-self: center; */
+  background-color: blue;
+}
+.computer-section {
+  /* border-top-right-radius: 8%;
+  border-bottom-right-radius: 8%;
+  align-self: center; */
+  background-color: green;
+}
+
+.game-rule-section {
+  /* grid-column: 1/-1;
+  grid-row: 2/3; */
+  background-color: cadetblue;
+  width: 100%;
+}
+.game-rule {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.game-rule-section p {
+  width: 95%;
+  margin: 0.5rem auto;
+}
+
+/* *************************************************************** */
+/* Round and Winner count section */
+.display {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cont2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* justify-content: center; */
+}
+
+.cont3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* justify-content: center; */
+}
+
+.cont4-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: fuchsia;
+}
+
+.winner-container {
+  /* display: none; */
+}
+
+/* *************************************************************** */
+/* Button section */
+.btns-section {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btns {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 7%;
+}
+
+.extra-btn {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 7%;
+  position: absolute;
+  top: 90%;
+}
+.play,
+.restart {
+  left: 10%;
+}
+
+.rule {
+  right: 5%;
+}
+/* *************************************************************** */
+/* Element Syling */
+
+.game-heading {
+  /* text-align: center; */
+  font-size: 3rem;
+  grid-column: 1/-1;
+}
+.player-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.player-score {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.request-choice {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.player-message {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  display: none;
+}
+.comp-score {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.compChoice {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+.compMessage {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  /* display: none; */
+}
+.round {
+}
+
+.winner-count {
+  text-align: center;
+}
+.round-count {
+  text-align: center;
+}
+.result {
+  /* background-color: pink; */
+}
+
+/*order matters in css*/
+
+.block {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
