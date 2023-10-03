@@ -1,21 +1,21 @@
 "use strict";
 let compMessage = document.querySelector(".compMessage");
 compMessage.classList.add("hide");
-function getComputerChoice() {
-  /************************************************/
-  //-Create an array of 'gameChopices'
-  let gameChoices = ["rock", "paper", "scissors"];
 
+/***********************************************************************/
+//Game section
+function getComputerChoice() {
+  //Create an array of 'gameChopices'
+  let gameChoices = ["rock", "paper", "scissors"];
   let choice = Math.floor(Math.random() * gameChoices.length);
-  // console.log("Computer picked", gameChoices[choice]);
   if (gameChoices[choice] === "rock") {
-    compMessage.textContent = "Computer selects Rock";
+    compMessage.textContent = "Computer picks Rock";
     compMessage.classList.remove("hide");
   } else if (gameChoices[choice] === "paper") {
-    compMessage.textContent = "Computer selects Paper";
+    compMessage.textContent = "Computer picks Paper";
     compMessage.classList.remove("hide");
   } else {
-    compMessage.textContent = "Computer selects Scissors";
+    compMessage.textContent = "Computer picks Scissors";
     compMessage.classList.remove("hide");
   }
   return gameChoices[choice];
@@ -38,7 +38,7 @@ let rule = document.querySelector("#rule");
 
 let gameRuleSection = document.querySelector(".game-rule-section");
 
-/************************************************/
+/***********************************************************************/
 play.addEventListener("click", () => {
   gameRuleSection.classList.add("hide");
   play.classList.add("hide");
@@ -50,7 +50,8 @@ play.addEventListener("click", () => {
   display.classList.remove("hide");
 });
 
-/************************************************/
+/***********************************************************************/
+
 let toggle = 0;
 rule.addEventListener("click", () => {
   if (toggle >= 1) {
@@ -73,19 +74,21 @@ rule.addEventListener("click", () => {
     playerSection.classList.remove("hide");
     computerSection.classList.remove("hide");
     display.classList.remove("hide");
-    result.classList.remove("hide");
+    // result.classList.remove("hide");
   }
 });
 
-/************************************************/
+/***********************************************************************/
 
 let round = 2;
 let computerScore = 0;
 let userScore = 0;
 
-/************************************************/
+/***********************************************************************/
+
 displayRounds(1);
 restart.addEventListener("click", () => {
+  result.classList.add("hide");
   displayRounds(1);
   computerScore = 0;
   userScore = 0;
@@ -96,7 +99,7 @@ restart.addEventListener("click", () => {
   winnerMessage.classList.add("hide");
 });
 
-/************************************************/
+/***********************************************************************/
 
 function displayOverallWinnerInfo(round, userScore, computerScore) {
   if (round === 6) {
@@ -116,7 +119,7 @@ function displayOverallWinnerInfo(round, userScore, computerScore) {
   }
 }
 
-/************************************************/
+/***********************************************************************/
 
 function displayRounds(round) {
   let roundText = `${round}`;
@@ -145,9 +148,13 @@ for (let i = 0; i < btns.length; i++) {
     displayRounds(round);
 
     const userChoice = btns[i].getAttribute("id");
-    requestChoice.textContent = `You pick ${userChoice}`;
-
+    const formattedUserChoice =
+      userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
+    requestChoice.textContent = `You pick ${formattedUserChoice}`;
+    result.classList.remove("hide");
     let computerChoice = getComputerChoice();
+    let formattedComputerChoice =
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
     const computerWins =
       (computerChoice === "rock" && userChoice === "scissors") ||
       (computerChoice === "paper" && userChoice === "rock") ||
@@ -157,15 +164,15 @@ for (let i = 0; i < btns.length; i++) {
       (userChoice === "paper" && computerChoice === "rock") ||
       (userChoice === "scissors" && computerChoice === "paper");
     if (computerChoice === userChoice) {
-      result.textContent = "It's a tie for this round! No scores.";
+      result.textContent = "It's a tie! No scores.";
     } else if (computerWins) {
       computerScore += 1;
       compScoreMessage.textContent = `COMPUTER SCORE: ${computerScore}`;
-      result.textContent = `You Lose! ${computerChoice} beats ${userChoice}`;
+      result.textContent = `You Lose! ${formattedComputerChoice} beats ${formattedUserChoice}`;
     } else if (userWins) {
       userScore += 1;
       playerScoreMessage.textContent = `PLAYER SCORE: ${userScore}`;
-      result.textContent = `You Win! ${userChoice} beats ${computerChoice}`;
+      result.textContent = `You Win! ${formattedUserChoice} beats ${formattedComputerChoice}`;
     }
     displayOverallWinnerInfo(displayRounds(round), userScore, computerScore);
     if (round === 1) {
